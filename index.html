@@ -128,7 +128,7 @@
 
 
 
-
+  <!--FORM FOR TAKING DATES-->
   <section class="book">
     <div class="container flex_space">
       <div class="text">
@@ -136,16 +136,16 @@
       </div>
       <div class="form">
         <form class="grid">
-          <input type="date" id="checkin-date" placeholder="Arrival Date">
-          <input type="date" id="checkout-date" placeholder="Departure Date">
-          <input type="number" placeholder="Adults">
-          <input type="number" placeholder="Childern">
+          <input type="date" id="checkin-date" name="checkin" placeholder="Arrival Date">
+          <input type="date" id="checkout-date" name="checkout" placeholder="Departure Date">
+          <input type="number" name="adults" placeholder="Adults">
+          <input type="number" name="children" placeholder="Children">
           <input type="submit" value="CHECK AVAILABILITY">
         </form>
       </div>
+      <script src="CheckInOut.js"></script>
     </div>
   </section>
-  <script src="script.js"></script>
   <section class="about top">
     <div class="container flex">
       <div class="left">
@@ -736,7 +736,6 @@
           commodo consequat. Duis
           aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
           sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
         <div class="icon">
           <i class="fa fa-facebook-f"></i>
           <i class="fa fa-instagram"></i>
@@ -777,6 +776,7 @@
 
 
   <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+  <script type="module" src="firebaseBooking.js"></script>
 </body>
 
 </html>
