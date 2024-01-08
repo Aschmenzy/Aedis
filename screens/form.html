@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <link rel="stylesheet" href="..\css\form.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="userForm">
+            <h2>Check out</h2>
+            <div class="form-group">
+                <label for="fullName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="fullName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="CheckInDate">Check-In Date</label>
+                <input type="date" id="checkindate" name="checkindate" required>
+            </div>
+            <div class="form-group">
+                <label for="CheckOutDate">Check-Out Date</label>
+                <input type="date" id="checkoutdate" name="checkoutdate" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Adults</label>
+                <input type="number" id="adults" name="adults" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Children</label>
+                <input type="number" id="children" name="children" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="..\retrieveData.js"></script>
+    <script src="..\CheckInOut.js"></script>
+    <script src="..\firebaseBooking.js" type="module"></script>
+</body>
+
+</html>

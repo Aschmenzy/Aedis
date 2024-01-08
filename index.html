@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crowny Hotel</title>
+  <title>Aedis Hotel</title>
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
     integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
@@ -136,10 +136,10 @@
       </div>
       <div class="form">
         <form class="grid">
-          <input type="date" id="checkin-date" name="checkin" placeholder="Arrival Date">
-          <input type="date" id="checkout-date" name="checkout" placeholder="Departure Date">
-          <input type="number" name="adults" placeholder="Adults">
-          <input type="number" name="children" placeholder="Children">
+          <input type="date" id="checkindate" name="checkin" placeholder="Arrival Date" required>
+          <input type="date" id="checkoutdate" name="checkout" placeholder="Departure Date" required>
+          <input type="number" name="adults" placeholder="Adults" required>
+          <input type="number" name="children" placeholder="Children" required>
           <input type="submit" value="CHECK AVAILABILITY">
         </form>
       </div>
@@ -776,7 +776,7 @@
 
 
   <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
-  <script type="module" src="firebaseBooking.js"></script>
+  <script type="module" src="redirectToForm.js"></script>
 </body>
 
 </html>

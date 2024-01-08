@@ -16,25 +16,39 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    document.querySelector('.form form').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    document.querySelector('#userForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-      // Convert date strings to Date objects
-      const checkInDate = new Date(document.getElementById('checkin-date').value);
-      const checkOutDate = new Date(document.getElementById('checkout-date').value);
-      const adults = document.querySelector('input[name="adults"]').value;
-      const children = document.querySelector('input[name="children"]').value;
-
-      try {
-        const docRef = await addDoc(collection(db, "reservations"), {
-          checkInDate: checkInDate,
-          checkOutDate: checkOutDate,
-          adults: adults,
-          children: children
-        });
-
-        console.log("Document written with ID: ", docRef.id);
-      } catch (error) {
-        console.error("Error adding document: ", error);
-      }
+  // Capture form values
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const country = document.getElementById('country').value;
+  const checkInDate = new Date(document.getElementById('checkindate').value);
+  const checkOutDate = new Date(document.getElementById('checkoutdate').value);
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  
+  try {
+    // Add a document to the 'reservations' collection
+    const docRef = await addDoc(collection(db, "UsersReservation"), {
+      firstName,
+      lastName,
+      email,
+      phone,
+      country,
+      checkInDate,
+      checkOutDate,
+      adults,
+      children
     });
+
+    console.log("Document written with ID: ", docRef.id);
+    //logic for sending to thank you page
+    window.location.href = 'thankYouPage.html';
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    
+  }
+});
