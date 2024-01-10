@@ -57,6 +57,7 @@ document.querySelector("#userForm").addEventListener("submit", async (e) => {
       adults,
       children,
       password: generatePassword(8),
+      checkedIn: false,
     });
 
     console.log("Document written with ID: ", docRef.id);
