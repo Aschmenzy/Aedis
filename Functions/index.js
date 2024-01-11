@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
-const { Resend } = require("resend");
+const {Resend} = require("resend");
 
 admin.initializeApp();
 
@@ -24,8 +24,10 @@ exports.sendCheckInEmails = functions
 
       const reservationsSnapshot = await db
           .collection("UsersReservation")
-          .where("checkInDate", ">=", admin.firestore.Timestamp.fromDate(todayStart))
-          .where("checkInDate", "<", admin.firestore.Timestamp.fromDate(todayEnd))
+          .where("checkInDate", ">=", admin.firestore
+              .Timestamp.fromDate(todayStart))
+          .where("checkInDate", "<", admin.firestore
+              .Timestamp.fromDate(todayEnd))
           .get();
 
       if (reservationsSnapshot.empty) {
@@ -33,48 +35,51 @@ exports.sendCheckInEmails = functions
         return null;
       }
 
-      const tasks = reservationsSnapshot.docs.map(async (doc) => {
-        const reservation = doc.data();
-        const email = reservation.email;
-        const firstName = reservation.firstName;
-        const password = reservation.password;
-        
-        try {
-          const userRecord = await admin.auth().createUser({ email, password });
-          console.log("Successfully created new user:", userRecord.uid);
+      const tasks = reservationsSnapshot
+          .docs.map(async (doc) => {
+            const reservation = doc.data();
+            const email = reservation.email;
+            const password = reservation.password;
 
-          const emailContent = `...`; // Your email content here
+            try {
+              const userRecord = await admin.auth()
+                  .createUser({email, password});
+              console.log("Successfully created new user:", userRecord.uid);
 
-          await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: email,
-            subject: "Your Aedis Check-In Account Information",
-            html: emailContent,
+              const emailContent = `...`; // Your email content here
+
+              await resend.emails.send({
+                from: "onboarding@resend.dev",
+                to: email,
+                subject: "Your Aedis Check-In Account Information",
+                html: emailContent,
+              });
+
+              console.log("Email sent to:", email);
+            } catch (error) {
+              console.error("Error in operation for:", email, error);
+            }
           });
-
-          console.log("Email sent to:", email);
-        } catch (error) {
-          console.error("Error in operation for:", email, error);
-        }
-      });
       await Promise.all(tasks);
     });
 
-exports.deletePastReservations = functions.pubsub.schedule('0 22 * * *') // Runs at 10 PM UTC daily
-    .timeZone('Europe/Zagreb') // Specify Zadar time zone
+exports.deletePastReservations = functions
+    .pubsub.schedule("0 22 * * *")
+    .timeZone("Europe/Zagreb") // Specify Zadar time zone
     .onRun(async (context) => {
-        const now = admin.firestore.Timestamp.now();
-        const reservationsRef = admin.firestore().collection('UsersReservation');
+      const now = admin.firestore.Timestamp.now();
+      const reservationsRef = admin.firestore()
+          .collection("UsersReservation");
+      const snapshot = await reservationsRef
+          .where("checkInDate", "<", now).get();
+      if (snapshot.empty) {
+        console.log("No past reservations to delete.");
+        return;
+      }
 
-        const snapshot = await reservationsRef.where('checkInDate', '<', now).get();
-        if (snapshot.empty) {
-          console.log("No past reservations to delete.");
-          return;
-        }
+      const batch = admin.firestore().batch();
+      snapshot.docs.forEach((doc) => batch.delete(doc.ref));
 
-        const batch = admin.firestore().batch();
-        snapshot.docs.forEach(doc => batch.delete(doc.ref));
-
-        await batch.commit();
-        console.log("Past reservations deleted.");
+      await batch.commit();
+      console.log("Past reservations deleted.");
     });
