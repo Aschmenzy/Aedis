@@ -42,7 +42,8 @@ button {
 
 .primary-btn {
   padding: 15px 40px;
-  background: #7fc142;
+  background: #305896;
+  border-radius: 24px;
   font-weight: bold;
   color: white;
 }
@@ -53,6 +54,7 @@ button {
   border: 2px solid white;
   font-weight: bold;
   color: white;
+  border-radius:  24px;
 }
 
 .container {
@@ -69,6 +71,10 @@ header {
 
 header img {
   margin: 20px 0;
+  width: auto;
+  height: 80px;
+  
+  
 }
 
 header ul {
@@ -87,7 +93,7 @@ header ul li a {
 }
 
 header ul li a:hover {
-  color: #7fc142;
+  color: #305896;
 }
 
 header i {
@@ -217,7 +223,7 @@ h1 {
 }
 
 .book h1 span {
-  color: #7fc142;
+  color:#305896;
 }
 
 .book input {
@@ -225,7 +231,7 @@ h1 {
 }
 
 .book input:nth-last-child(1) {
-  background: #7fc142;
+  background:#305896;
   color: #fff;
 }
 
@@ -305,7 +311,7 @@ h1 {
 .counter hr {
   width: 50%;
   margin: 10px auto;
-  background: #7fc142;
+  background:#305896;
   height: 2px;
   border: none;
 }
@@ -339,7 +345,7 @@ h1 {
   line-height: 20px;
   margin-left: 20px;
   font-weight: 500;
-  color: #7fc142;
+  color:#305896;
 }
 
 .rooms h3 span {
@@ -354,7 +360,7 @@ h1 {
   top: -20%;
   height: 50px;
   width: 50px;
-  background: #7fc142 !important;
+  background:#305896 !important;
 }
 
 .owl-carousel1 .owl-nav .owl-prev i,
@@ -472,7 +478,7 @@ h1 {
 
 .services i {
   font-size: 50px;
-  color: #7fc142;
+  color:#305896;
   transition: 0.5s;
 }
 
@@ -489,7 +495,7 @@ h1 {
 }
 
 .services .box:hover {
-  background: #7fc142;
+  background:#305896;
   color: #fff;
   cursor: pointer;
 }
@@ -535,7 +541,7 @@ h1 {
 
 .Customer h3 {
   margin-top: 20px;
-  color: #7fc142;
+  color:#305896;
 }
 
 .Customer span {
@@ -549,11 +555,11 @@ h1 {
 }
 
 .owl-carousel2 .owl-dots i {
-  color: #7fc142;
+  color:#305896;
 }
 
 .owl-carousel2 .owl-dots i:hover button {
-  color: #7fc142 !important;
+  color:#305896 !important;
 }
 
 .owl-carousel2 span {
@@ -562,8 +568,8 @@ h1 {
 }
 
 .owl-carousel2 .active span {
-  background: #7fc142 !important;
-  border: 2px solid #7fc142;
+  background:#305896 !important;
+  border: 2px solid#305896;
 }
 
 /*--------Customer---------*/
@@ -573,7 +579,7 @@ h1 {
 }
 
 .news i {
-  color: #7fc142;
+  color:#305896;
   text-transform: capitalize;
   font-size: 18px;
 }
@@ -630,7 +636,7 @@ h1 {
 }
 
 .newsletter .container {
-  background: #7fc142;
+  background:#305896;
   padding: 40px 30px;
   position: absolute;
   top: -70px;
@@ -695,7 +701,7 @@ footer li {
 }
 
 footer i {
-  color: #7fc142;
+  color:#305896;
   margin: 20px 0;
   margin-right: 20px;
 }
@@ -794,7 +800,7 @@ footer label {
 
   .newsletter {
     position: relative;
-    background: #7fc142;
+    background:#305896;
   }
 
   .newsletter .container {
