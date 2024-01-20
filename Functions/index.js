@@ -116,7 +116,6 @@ exports.deletePastReservations = functions.pubsub
         // Add the reservation to the DeletedReservations collection
         const deletedReservationData = {...doc.data(), deletedAt: now};
         deletedReservationsRef.doc(doc.id).set(deletedReservationData);
-        //delete the reservation from the reservation collection
         batch.delete(doc.ref);
       });
 
