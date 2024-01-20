@@ -25,11 +25,13 @@ li {
 
 .flex {
   display: flex;
+  
 }
 
 .flex_space {
   display: flex;
   justify-content: space-between;
+  
 }
 
 button {
@@ -67,6 +69,7 @@ header {
   height: 10vh;
   line-height: 10vh;
   padding: 0 20px;
+  
 }
 
 header img {
@@ -827,4 +830,160 @@ footer label {
   footer .grid {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+
+@media only screen and (max-width:425px) {
+  * {
+    width: auto;
+    
+  }
+
+  header ul{
+    z-index: 1;
+  }
+
+ .logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+  .fa.fa-bars {
+    display: none;
+  }
+
+  .container {
+    max-width: 95%;
+    padding: 0 10px;
+  }
+
+  .home {
+    height: 50vh;
+  }
+
+  .home img {
+    height: 50vh;
+    
+  }
+
+  .home .text h1 {
+    font-size: 40px;
+    /* Adjusted for readability */
+  }
+
+  .home .text {
+    left: 10%;
+    /* Adjust text positioning */
+    width: 80%;
+    /* Ensure text doesn't overflow */
+  }
+
+  .book .grid {
+    grid-template-columns: 1fr;
+    /* Stack elements vertically */
+  }
+  
+  .counter {
+    background-image: url("../images/background-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+ }
+
+ .heading h1{
+    font-size: 60px;
+  }
+  
+    .book .flex_space {
+      flex-direction: column;
+ }
+
+  .counter .grid {
+    grid-template-columns: 4;
+    /* Adjust for smaller screens */
+  }
+
+  .counter .box {
+   margin-bottom: 20px;
+  }
+
+  .rooms .owl-nav .owl-prev,
+  .rooms .owl-nav .owl-next,
+  .gallery .owl-nav .owl-prev,
+  .gallery .owl-nav .owl-next {
+    top: -20%;
+    /* Adjust navigation button position */
+  }
+
+  .services .grid2 {
+    grid-template-columns: 1fr;
+    /* Stack elements vertically */
+  }
+
+  .Customer {
+    height: 77vh;
+  }
+
+  .Customer .container {
+    max-width: 90%;
+  }
+
+  .owl-carousel2 .owl-dots {
+    left: 40%;
+    /* Center dots */
+  }
+
+  .news .left,
+  .news .right {
+    width: 100%;
+    /* Stack news sections */
+  }
+
+  .continet {
+    display: flex;
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+  }
+
+  .left.grid2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+  }
+
+  .about .right img{
+    width: 100%;
+    height: auto;
+  }
+
+  .newsletter .container {
+    padding: 20px 15px;
+    /* Adjust padding */
+  }
+
+  .newsletter input {
+    width: 100%;
+    /* Full width inputs */
+    margin: 10px 0;
+    /* Space out inputs */
+  }
+
+  footer .grid {
+    grid-template-columns: 1fr;
+    /* Stack footer sections */
+  }
+
+  header ul {
+    background: #009f7f;
+    padding: 20px;
+    /* Add padding */
+  }
+
+  /* Additional adjustments for smaller text, buttons, and other elements can be added here */
 }
