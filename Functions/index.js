@@ -80,7 +80,7 @@ exports.sendCheckInEmails = functions
 
           // Send email regardless of user creation status
           await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "aedishotel.com",
             to: email,
             subject: "Your Aedis Check-In Account Information",
             html: emailContent,
