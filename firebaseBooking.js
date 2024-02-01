@@ -131,6 +131,11 @@ document.querySelector("#userForm").addEventListener("submit", async (e) => {
         roomNumber: assignedRoomId,
       });
 
+      await updateDoc(docRef, {
+        reservationId: docRef.id,
+      });
+
+
       // Get the current room document reference
       const roomDocRef = doc(db, "AvailableRooms", assignedRoomId);
 

@@ -53,10 +53,8 @@ exports.sendCheckInEmails = functions
             await admin.auth().createUser({email, password});
             console.log("Successfully created new user:", email);
           } catch (error) {
-            if (error.code ===
-              "auth/email-already-exists") {
-              console.log("User already exists with email:"
-                  , email);
+            if (error.code === "auth/email-already-exists") {
+              console.log("User already exists with email:", email);
             } else {
               throw error;
             }
@@ -80,7 +78,7 @@ exports.sendCheckInEmails = functions
 
           // Send email regardless of user creation status
           await resend.emails.send({
-            from: "aedishotel.com",
+            from: "Karlo <onboarding@resend.dev>",
             to: email,
             subject: "Your Aedis Check-In Account Information",
             html: emailContent,
@@ -100,11 +98,14 @@ exports.deletePastReservations = functions.pubsub
     .onRun(async (context) => {
       const now = admin.firestore.Timestamp.now();
       const reservationsRef = admin.firestore().collection("UsersReservation");
-      const deletedReservationsRef = admin.firestore()
+      const deletedReservationsRef = admin
+          .firestore()
           .collection("DeletedReservations");
 
       const snapshot = await reservationsRef
-          .where("checkInDate", "<", now).get();
+          .where("checkInDate", "<", now)
+          .where("checkedIn", "==", false)
+          .get();
       if (snapshot.empty) {
         console.log("No past reservations to delete.");
         return;
@@ -113,7 +114,7 @@ exports.deletePastReservations = functions.pubsub
       const batch = admin.firestore().batch();
 
       snapshot.docs.forEach((doc) => {
-        // Add the reservation to the DeletedReservations collection
+      // Add the reservation to the DeletedReservations collection
         const deletedReservationData = {...doc.data(), deletedAt: now};
         deletedReservationsRef.doc(doc.id).set(deletedReservationData);
         batch.delete(doc.ref);
